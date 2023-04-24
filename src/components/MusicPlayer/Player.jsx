@@ -29,7 +29,6 @@ const Player = ({
     ref.current.currentTime = seekTime;
   }, [seekTime]);
 
-  // console.log("url ", activeSong.shareUrl);
   return (
     <audio
       src={activeSong?.hub?.actions[1]?.uri}
