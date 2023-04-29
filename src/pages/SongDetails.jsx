@@ -9,7 +9,7 @@ const SongDetails = () => {
   const dispatch = useDispatch();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data: songData, isFetching: isFetchingSongDetails } = useGetSongDetailsQuery(songKey);
-  // console.log("songdata -> ", songData);
+
   return (
     <div className="flex flex-col">
       <DetailsHeader
