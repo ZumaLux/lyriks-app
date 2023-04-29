@@ -5,16 +5,16 @@ import { setActiveSong, playPause } from "../redux/features/playerSlice";
 import { useGetSongDetailsQuery } from "../redux/services/spotify";
 
 const SongDetails = () => {
-  const { songid } = useParams();
+  const { songKey } = useParams();
   const dispatch = useDispatch();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
-  const { data: songData, isFetching: isFetchingSongDetails } = useGetSongDetailsQuery(songid);
-  console.log("songdata -> ", songData);
+  const { data: songData, isFetching: isFetchingSongDetails } = useGetSongDetailsQuery(songKey);
+  // console.log("songdata -> ", songData);
   return (
     <div className="flex flex-col">
       <DetailsHeader
         artistId={songData?.artists && songData?.artists[0].adamid}
-        songData={songData?.data[0].attributes}
+        songData={songData && songData}
       />
 
       <div className="mb-10">
@@ -24,14 +24,16 @@ const SongDetails = () => {
           {songData?.sections && songData.sections[1].type === "LYRICS" ? (
             songData?.sections &&
             songData.sections[1].text.map((line, i) => (
-              <p className="text-gray-400 text-base my-1">{line}</p>
+              <p key={i} className="text-gray-400 text-base my-1">
+                {line}
+              </p>
             ))
           ) : (
             <>
               <p className="text-gray-400 text-base my-1">Sorry, no lyrics found!</p>
-              <p className="text-gray-400 text-base my-1">
+              {/* <p className="text-gray-400 text-base my-1">
                 Lyrics are unavailable due to an API change!
-              </p>
+              </p> */}
             </>
           )}
         </div>

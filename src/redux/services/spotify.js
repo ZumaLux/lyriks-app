@@ -13,7 +13,7 @@ export const spotifyApi = createApi({
   endpoints: (builder) => ({
     // getTopTracks: builder.query({ query: () => "/chart/tracks/top" }),
     getTopTracks: builder.query({ query: () => "/charts/track" }),
-    getSongDetails: builder.query({ query: (songid) => `/songs/v2/get-details/?id=${songid}` }), // not working
+    getSongDetails: builder.query({ query: (key) => `/songs/get-details/?key=${key}` }), // not working
   }),
 });
 
