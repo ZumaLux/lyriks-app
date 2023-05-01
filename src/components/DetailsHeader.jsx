@@ -7,11 +7,7 @@ const DetailsHeader = ({ artistId, artistData, songData }) => {
       <div className="w-full bg-gradient-to-l from-transparent to-black sm:h-48 h-28" />
       <div className="absolute inset-0 flex items-center">
         <img
-          src={
-            songData?.images?.coverart
-              ? songData?.images?.coverart.replace("{w}", "500").replace("{h}", "500")
-              : reactLogoTemp
-          }
+          src={songData?.images?.coverart ? songData?.images?.coverart : reactLogoTemp}
           alt="art"
           className="sm:w-48 w-28 sm:h-48 h-28 rounded-full object-cover border-2 shadow-xl shadow-black"
         />
