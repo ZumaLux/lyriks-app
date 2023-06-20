@@ -3,17 +3,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { DetailsHeader, Error, Loader, RelatedSongs } from "../components";
 import { setActiveSong, playPause } from "../redux/features/playerSlice";
 import { useGetSongDetailsQuery } from "../redux/services/spotify";
+import { useEffect } from "react";
 
 const SongDetails = () => {
   const { songKey } = useParams();
   const dispatch = useDispatch();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
-  const { data: songData, isFetching: isFetchingSongDetails } = useGetSongDetailsQuery(songKey);
+  const {
+    data: songData,
+    isFetching: isFetchingSongDetails,
+    error,
+  } = useGetSongDetailsQuery(songKey);
+
+  if (isFetchingSongDetails)
+    return <Loader title={"Searching song details..."} />;
+  if (error) <Error />;
 
   return (
     <div className="flex flex-col">
       <DetailsHeader
-        artistId={songData?.artists && songData?.artists[0].adamid}
+        // artistId={songData?.artists && songData?.artists[0].adamid}
+        artistId=""
         songData={songData && songData}
       />
 
@@ -29,7 +39,9 @@ const SongDetails = () => {
             ))
           ) : (
             <>
-              <p className="text-gray-400 text-base my-1">Sorry, no lyrics found!</p>
+              <p className="text-gray-400 text-base my-1">
+                Sorry, no lyrics found!
+              </p>
             </>
           )}
         </div>
