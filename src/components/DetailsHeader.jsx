@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import reactLogoTemp from "../assets/logo.svg";
+import { useEffect } from "react";
 
 const DetailsHeader = ({ artistId, artistData, songData }) => {
-  const artist = artistData?.artists[artistId]?.attributes;
+  // const artist = artistData?.data[0]?.artists[artistId]?.attributes;
+  const artist = artistData?.data[0]?.attributes;
+
+  useEffect(() => {
+    console.log(songData);
+  }, [songData]);
 
   return (
     <div className="relative w-full flex flex-col">
@@ -20,7 +26,7 @@ const DetailsHeader = ({ artistId, artistData, songData }) => {
 
         <div className="ml-5">
           <p className="text-white font-bold sm:text-3xl text-xl ">
-            {songData?.subtitle}
+            {artistId ? artist.name : songData?.title}
           </p>
           {!artistId && (
             <Link to={`/artists/${songData?.artists[0].adamid}`}>

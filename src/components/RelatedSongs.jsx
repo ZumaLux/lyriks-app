@@ -17,3 +17,5 @@ const RelatedSongs = ({
 };
 
 export default RelatedSongs;
+
+//Api does not have related songs

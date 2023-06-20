@@ -15,7 +15,14 @@ export const spotifyApi = createApi({
     getSongDetails: builder.query({
       query: (key) => `/songs/get-details/?key=${key}`,
     }),
+    getArtistDetails: builder.query({
+      query: (id) => `/artists/get-details?id=${id}`,
+    }),
   }),
 });
 
-export const { useGetTopTracksQuery, useGetSongDetailsQuery } = spotifyApi;
+export const {
+  useGetTopTracksQuery,
+  useGetSongDetailsQuery,
+  useGetArtistDetailsQuery,
+} = spotifyApi;

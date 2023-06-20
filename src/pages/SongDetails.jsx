@@ -21,11 +21,7 @@ const SongDetails = () => {
 
   return (
     <div className="flex flex-col">
-      <DetailsHeader
-        // artistId={songData?.artists && songData?.artists[0].adamid}
-        artistId=""
-        songData={songData && songData}
-      />
+      <DetailsHeader songData={songData} artistId={""} />
 
       <div className="mb-10">
         <h2 className="text-white text-3xl font-bold">Lyrics</h2>
