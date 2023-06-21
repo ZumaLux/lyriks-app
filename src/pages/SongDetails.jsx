@@ -1,14 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { DetailsHeader, Error, Loader, RelatedSongs } from "../components";
-import { setActiveSong, playPause } from "../redux/features/playerSlice";
+import { DetailsHeader, Error, Loader } from "../components";
 import { useGetSongDetailsQuery } from "../redux/services/spotify";
-import { useEffect } from "react";
 
 const SongDetails = () => {
   const { songKey } = useParams();
-  const dispatch = useDispatch();
-  const { activeSong, isPlaying } = useSelector((state) => state.player);
   const {
     data: songData,
     isFetching: isFetchingSongDetails,

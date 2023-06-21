@@ -1,14 +1,8 @@
 import { Link } from "react-router-dom";
 import reactLogoTemp from "../assets/logo.svg";
-import { useEffect } from "react";
 
 const DetailsHeader = ({ artistId, artistData, songData }) => {
-  // const artist = artistData?.data[0]?.artists[artistId]?.attributes;
   const artist = artistData?.data[0]?.attributes;
-
-  useEffect(() => {
-    console.log(songData);
-  }, [songData]);
 
   return (
     <div className="relative w-full flex flex-col">
