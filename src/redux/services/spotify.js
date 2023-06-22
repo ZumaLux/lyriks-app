@@ -13,10 +13,13 @@ export const spotifyApi = createApi({
   endpoints: (builder) => ({
     getTopTracks: builder.query({ query: () => "/charts/track" }),
     getSongDetails: builder.query({
-      query: (key) => `/songs/get-details/?key=${key}`,
+      query: (songKey) => `/songs/get-details/?key=${songKey}`,
     }),
     getArtistDetails: builder.query({
-      query: (id) => `/artists/get-details?id=${id}`,
+      query: (artistId) => `/artists/get-details?id=${artistId}`,
+    }),
+    getSongsBySearch: builder.query({
+      query: (searchTerm) => `/search?term=${searchTerm}`,
     }),
   }),
 });
@@ -25,4 +28,5 @@ export const {
   useGetTopTracksQuery,
   useGetSongDetailsQuery,
   useGetArtistDetailsQuery,
+  useGetSongsBySearchQuery,
 } = spotifyApi;
