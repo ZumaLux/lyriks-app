@@ -20,7 +20,9 @@ const SongCard = ({ song, isPlaying, activeSong, data, i }) => {
       <div className="relative w-full h-56 group">
         <div
           className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${
-            activeSong?.title === song.title ? "flex bg-black bg-opacity-70" : "hidden"
+            activeSong?.title === song.title
+              ? "flex bg-black bg-opacity-70"
+              : "hidden"
           }`}
         >
           <PlayPause
@@ -31,14 +33,19 @@ const SongCard = ({ song, isPlaying, activeSong, data, i }) => {
             handlePlay={handlePlayClick}
           />
         </div>
-        <img alt="song_img" src={song?.images?.coverart ? song?.images?.coverart : reactLogoTemp} />
+        <img
+          alt="song_img"
+          src={song?.images?.coverart ? song?.images?.coverart : reactLogoTemp}
+        />
       </div>
       <div className="mt-4 flex flex-col">
         <p className="font-semibold text-lg text-white truncate">
           <Link to={`/songs/${song?.key}`}>{song.title}</Link>
         </p>
         <p className="text-sm truncate text-gray-300 mt-1">
-          <Link to={`/artists/${song.artists && song.artists[0].adamid}`}>{song.subtitle}</Link>
+          <Link to={`/artists/${song.artists && song.artists[0].adamid}`}>
+            {song.subtitle}
+          </Link>
         </p>
       </div>
     </div>
