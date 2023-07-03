@@ -9,7 +9,8 @@ const AroundYou = () => {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   useEffect(() => {
-    //api call
+    // api call
+    // api does not support the data needed for 'around you'
   }, [country]);
 
   if (loading) return <Loader title={"Loading songs around you..."} />;

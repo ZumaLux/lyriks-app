@@ -3,3 +3,5 @@ const ArtistCard = () => {
 };
 
 export default ArtistCard;
+
+// Api does not support the data needed for dipslay
